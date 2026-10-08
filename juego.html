@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokémon Memory Match Game | Juego de Parejas</title>
+
+  <link rel="shortcut icon" href="./images/favicon-32x32.png" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Encabezado con navegación al inicio -->
+  <header class="header">
+    <div style="margin-bottom: 0.8rem;">
+      <a href="./index.html" class="btn-back" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #cbd5e1; text-decoration: none; font-size: 0.9rem; font-weight: 600; background: rgba(255,255,255,0.1); padding: 0.4rem 0.9rem; border-radius: 20px; transition: background 0.2s;">
+        ← Volver a la Carta Pokémon
+      </a>
+    </div>
+    <h1>POKÉMON MEMORY</h1>
+    <p>Encuentra las parejas de cartas de Pokémon</p>
+  </header>
+
+  <!-- Panel de Estadísticas y Controles -->
+  <section class="controls-panel">
+    <div class="stat-item">
+      <span>Movimientos:</span>
+      <span id="moves-count" class="stat-value">0</span>
+    </div>
+    <div class="stat-item">
+      <span>Parejas:</span>
+      <span id="matches-count" class="stat-value">0/8</span>
+    </div>
+    <div class="stat-item">
+      <span>Tiempo:</span>
+      <span id="time-count" class="stat-value">00:00</span>
+    </div>
+    <button id="restart-btn" class="btn" title="Reiniciar el juego con nuevos Pokémon">
+      🔄 Reiniciar
+    </button>
+  </section>
+
+  <!-- Contenedor Principal del Juego -->
+  <main class="game-container">
+    <!-- Estado de Carga -->
+    <div id="loading" class="loading-container">
+      <svg class="loading-pokeball" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" fill="#f8fafc" stroke="#1e293b" stroke-width="6"/>
+        <path d="M 4,50 A 46,46 0 0,1 96,50 Z" fill="#ef4444" stroke="#1e293b" stroke-width="6"/>
+        <line x1="4" y1="50" x2="96" y2="50" stroke="#1e293b" stroke-width="6"/>
+        <circle cx="50" cy="50" r="14" fill="#ffffff" stroke="#1e293b" stroke-width="6"/>
+        <circle cx="50" cy="50" r="6" fill="#1e293b"/>
+      </svg>
+      <p class="loading-text">Cargando Pokémon desde la PokéAPI...</p>
+    </div>
+
+    <!-- Tablero de Cartas (Grid) -->
+    <div id="game-board" class="game-board" style="display: none;"></div>
+  </main>
+
+  <!-- Modal de Fin del Juego (Victoria) -->
+  <div id="victory-modal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-trophy">🏆</div>
+      <h2 class="modal-title">¡Felicidades, Maestro Pokémon!</h2>
+      <p class="modal-subtitle">Has encontrado todas las parejas con éxito.</p>
+
+      <div class="modal-stats">
+        <div class="modal-stat-box">
+          <h4>Movimientos</h4>
+          <p id="modal-moves">0</p>
+        </div>
+        <div class="modal-stat-box">
+          <h4>Tiempo</h4>
+          <p id="modal-time">00:00</p>
+        </div>
+      </div>
+
+      <button id="play-again-btn" class="btn" style="font-size: 1.05rem; padding: 0.75rem 2rem;">
+        🎮 Volver a Jugar
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
